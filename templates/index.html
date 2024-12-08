@@ -1,13 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Lista de Libros</title>
-</head>
-<body>
-    <h1>Lista de Libros</h1>
-    <a href="/create">Agregar nuevo libro</a>
-    <table border="1">
+{% extends "base.html" %}
+{% block title %}Lista de Libros{% endblock %}
+{% block content %}
+<h1 class="text-center">Lista de Libros</h1>
+<a href="/create" class="btn btn-success mb-3">Agregar Nuevo Libro</a>
+<table class="table table-bordered table-striped">
+    <thead class="table-dark">
         <tr>
             <th>ID</th>
             <th>Título</th>
@@ -15,6 +12,8 @@
             <th>Año</th>
             <th>Acciones</th>
         </tr>
+    </thead>
+    <tbody>
         {% for libro in libros %}
         <tr>
             <td>{{ libro.id }}</td>
@@ -22,11 +21,11 @@
             <td>{{ libro.autor }}</td>
             <td>{{ libro.anio }}</td>
             <td>
-                <a href="/update/{{ libro.id }}">Editar</a>
-                <a href="/delete/{{ libro.id }}" onclick="return confirm('¿Estás seguro?')">Eliminar</a>
+                <a href="/update/{{ libro.id }}" class="btn btn-warning btn-sm">Editar</a>
+                <a href="/delete/{{ libro.id }}" class="btn btn-danger btn-sm" onclick="return confirm('¿Estás seguro?')">Eliminar</a>
             </td>
         </tr>
         {% endfor %}
-    </table>
-</body>
-</html>
+    </tbody>
+</table>
+{% endblock %}

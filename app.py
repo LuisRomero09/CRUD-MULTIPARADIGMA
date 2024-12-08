@@ -36,7 +36,7 @@ def create():
         cursor.execute("INSERT INTO libros (titulo, autor, anio) VALUES (%s, %s, %s)", (titulo, autor, anio))
         conn.commit()
         conn.close()
-        flash('Libro agregado con éxito.')
+        flash('Libro agregado con éxito.', 'success')
         return redirect(url_for('index'))
     return render_template('create.html')
 
@@ -52,7 +52,7 @@ def update(id):
         cursor.execute("UPDATE libros SET titulo = %s, autor = %s, anio = %s WHERE id = %s", (titulo, autor, anio, id))
         conn.commit()
         conn.close()
-        flash('Libro actualizado con éxito.')
+        flash('Libro actualizado con éxito.', 'success')
         return redirect(url_for('index'))
     else:
         cursor.execute("SELECT * FROM libros WHERE id = %s", (id,))
@@ -68,7 +68,7 @@ def delete(id):
     cursor.execute("DELETE FROM libros WHERE id = %s", (id,))
     conn.commit()
     conn.close()
-    flash('Libro eliminado con éxito.')
+    flash('Libro eliminado con éxito.', 'danger')
     return redirect(url_for('index'))
 
 if __name__ == '__main__':
