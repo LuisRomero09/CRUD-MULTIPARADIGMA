@@ -2,31 +2,24 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Lista de Libros</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Libros</title>
+    <link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
-    <h1>Lista de Libros</h1>
-    <a href="/create">Agregar nuevo libro</a>
-    <table border="1">
-        <tr>
-            <th>ID</th>
-            <th>Título</th>
-            <th>Autor</th>
-            <th>Año</th>
-            <th>Acciones</th>
-        </tr>
-        {% for libro in libros %}
-        <tr>
-            <td>{{ libro.id }}</td>
-            <td>{{ libro.titulo }}</td>
-            <td>{{ libro.autor }}</td>
-            <td>{{ libro.anio }}</td>
-            <td>
-                <a href="/update/{{ libro.id }}">Editar</a>
-                <a href="/delete/{{ libro.id }}" onclick="return confirm('¿Estás seguro?')">Eliminar</a>
-            </td>
-        </tr>
-        {% endfor %}
-    </table>
+    <header>
+        <h1>Lista de Libros</h1>
+    </header>
+    <div class="container">
+        <a href="{{ url_for('create') }}">➕ Agregar Nuevo Libro</a>
+        <ul>
+            {% for libro in libros %}
+            <li>
+                <span>{{ libro[1] }} - {{ libro[2] }} ({{ libro[3] }})</span>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
 </body>
 </html>
