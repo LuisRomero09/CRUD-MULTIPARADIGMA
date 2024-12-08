@@ -5,7 +5,7 @@ import os
 app = Flask(__name__)
 app.secret_key = "your_secret_key"
 
-# Configuración de la base de datos usando variables de entorno
+# variables de entorno
 db_config = {
     'host': os.environ.get('DB_HOST', 'autorack.proxy.rlwy.net'),
     'user': os.environ.get('DB_USER', 'root'),
